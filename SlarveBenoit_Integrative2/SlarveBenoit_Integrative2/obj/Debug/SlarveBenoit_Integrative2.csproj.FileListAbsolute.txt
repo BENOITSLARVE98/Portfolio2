@@ -1,0 +1,8 @@
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\bin\Debug\SlarveBenoit_Integrative2.exe.config
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\bin\Debug\SlarveBenoit_Integrative2.exe
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\bin\Debug\SlarveBenoit_Integrative2.pdb
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\obj\Debug\SlarveBenoit_Integrative2.csprojResolveAssemblyReference.cache
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\obj\Debug\SlarveBenoit_Integrative2.csproj.CoreCompileInputs.cache
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\obj\Debug\SlarveBenoit_Integrative2.exe
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\obj\Debug\SlarveBenoit_Integrative2.pdb
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_Integrative2\SlarveBenoit_Integrative2\bin\Debug\MySql.Data.dll

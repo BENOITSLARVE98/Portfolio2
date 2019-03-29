@@ -1,0 +1,62 @@
+[
+{
+"id": "0",
+
+"RestaurantId": "38",
+
+"ReviewScore": "78",
+
+"PossibleReviewScore": "100",
+
+"ReviewText": "Good",
+
+"Reviewcolor": "Green"
+
+}
+{
+"id": "4",
+
+"Month": "April",
+
+"FullRatingIcon": "⬢",
+
+"EmptyRatingIcon": "⬡",
+
+"QuarterRatingIcon": "¼",
+
+"HalfRatingIcon": "½"
+
+"ThreeQuarterRatingIcon": "¾"
+
+}
+{
+"id": "9",
+
+"RestaurantName": "Bones",
+
+"Address": "3130 Piedmont Road Atlanta, GA 30305",
+
+"Phone": "(404) 237-2663",
+
+"HoursOfOperation": "Lunch: Monday - Friday: 11:30am - 2:30pm Dinner: Sunday - Saturday: 5:30pm - 10:00pm",
+
+"Price": "$50 and over",
+
+"USACityLocation": "Atlanta"
+
+"Cuisine": "Steak"
+
+"FoodRating": "2.00"
+
+"ServiceRating": "5.00"
+
+"AmbienceRating": "2.00"
+
+"ValueRating": "1.00"
+
+"OverallRating": "2.50"
+
+"OverallPossibleRating": "5.00"
+
+}
+]
