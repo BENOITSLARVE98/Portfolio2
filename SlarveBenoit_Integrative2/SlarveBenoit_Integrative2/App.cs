@@ -345,6 +345,109 @@ namespace SlarveBenoit_Integrative2
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("=============================");
+                    int selection = Utility.ValidateSpecialInt("Make selection:");
+                    switch (selection)
+                    {
+                        case 1: // Alphabetically
+                            conn = new MySqlConnection(cs);
+                            MySqlDataReader rdr = null;
+                            conn.Open();
+
+                            string stm = "SELECT RestaurantName, OverallRating FROM RestaurantProfiles WHERE OverallRating IS NOT NULL ORDER BY RestaurantName ASC  ";
+                            MySqlCommand cmd = new MySqlCommand(stm, conn);
+                            string version = Convert.ToString(cmd.ExecuteScalar());
+
+                            rdr = cmd.ExecuteReader();
+                            while (rdr.Read())
+                            {
+                                Console.WriteLine("RestaurantName:" + rdr.GetString(0) + "  \n\t\t\t\t\t\tOverallRating:" + rdr.GetDecimal(1));
+                            }
+
+                            break;
+
+
+                        case 2: //Reverse Alphabetical
+                            conn = new MySqlConnection(cs);
+                            MySqlDataReader adr = null;
+                            conn.Open();
+
+                            string atm = "SELECT RestaurantName, OverallRating FROM RestaurantProfiles WHERE OverallRating IS NOT NULL ORDER BY RestaurantName DESC ";
+                            MySqlCommand amd = new MySqlCommand(atm, conn);
+                            string Aersion = Convert.ToString(amd.ExecuteScalar());
+
+                            adr = amd.ExecuteReader();
+                            while (adr.Read())
+                            {
+                                Console.WriteLine("RestaurantName:" + adr.GetString(0) + "  \n\t\t\t\t\t\tOverallRating:" + adr.GetDecimal(1));
+                            }
+                            break;
+
+
+                        case 3: //Top Star ratings to worst
+                            conn = new MySqlConnection(cs);
+                            MySqlDataReader edr = null;
+                            conn.Open();
+
+                            string etm = "SELECT RestaurantName, OverallRating FROM RestaurantProfiles WHERE OverallRating IS NOT NULL ORDER BY OverallRating DESC  ";
+                            MySqlCommand emd = new MySqlCommand(etm, conn);
+                            string eersion = Convert.ToString(emd.ExecuteScalar());
+
+                            //int co = 1;
+                            edr = emd.ExecuteReader();
+                            while (edr.Read())
+                            {
+                                string rating = edr.GetDecimal(1).ToString();
+                                string r = Symbols(rating);
+                                Console.WriteLine("RestaurantName:" + edr.GetString(0) + "  \n\t\t\t\t\t\tOverallRating:" + edr.GetDecimal(1) + " RatingSymbol " + r);
+
+                            }
+                            break;
+
+
+                        case 4: //Worst Star rating to Best
+                            conn = new MySqlConnection(cs);
+                            MySqlDataReader udr = null;
+                            conn.Open();
+
+
+                            string utm = "SELECT RestaurantName, OverallRating FROM RestaurantProfiles WHERE OverallRating IS NOT NULL ORDER BY OverallRating ASC ";
+                            MySqlCommand umd = new MySqlCommand(utm, conn);
+                            string uersion = Convert.ToString(umd.ExecuteScalar());
+
+                            udr = umd.ExecuteReader();
+                            while (udr.Read())
+                            {
+                                string rating = udr.GetDecimal(1).ToString();
+                                string r = Symbols(rating);
+                                Console.WriteLine("RestaurantName:" + udr.GetString(0) + "  \n\t\t\t\t\t\tOverallRating:" + udr.GetDecimal(1) + " RatingSymbol " + r);
+                            }
+                            break;
+
+
+                        case 5:
+                            ShowOnlyX();
+                            break;
+
+                        case 6:
+                            myMenu.Display();
+                            Select();
+                            break;
+                    }
+                    Console.ReadKey();
+                    secondMenu.Display();
+                    secondSelect();
+                }
+                void ShowcaseRating()
+            {
+                Menu secondMenu = new Menu("List Restaurants Alphabetically", "List Restaurants in Reverse Alphabetical", "Sort Restaurants From Best/Most Stars to Worst", "Sort Restaurants From Worst/Least Stars to Best", "Show Only X and Up", "Exit");
+                secondMenu.Title = "Hello Admin, How would you like to sort the data:";
+                secondMenu.Display();
+                secondSelect();
+
+                void secondSelect()
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("=============================");
                         int selection = Utility.ValidateSpecialInt("Make selection:");
                         switch (selection)
                         {
