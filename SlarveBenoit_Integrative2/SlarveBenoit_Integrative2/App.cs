@@ -140,6 +140,186 @@ namespace SlarveBenoit_Integrative2
         }
 
 
+        void ShowcaseBarGraph()
+        {
+
+            Menu thirdMenu = new Menu("Show Average of Reviews for Restaurants", "Dinner Spinner(Select random restaurants)", "Top 10 Restaurants", "Back to Main Menu");
+            thirdMenu.Title = "Hello Admin, How would you like to sort the data:";
+            thirdMenu.Display();
+            thirdSelect();
+
+            void thirdSelect()
+            {
+                Console.WriteLine("=============================");
+                int selection = Utility.ValidateSpecialInt("Make selection:");
+                switch (selection)
+                {
+                    case 1:
+
+                        conn = new MySqlConnection(cs);
+                        MySqlDataReader rdr = null;
+                        conn.Open();
+
+                        //string stm = "SELECT RestaurantName, ReviewScore FROM RestaurantProfiles left join RestaurantReviews using(id)";
+
+                        string stm = "SELECT f.RestaurantName, (SELECT AVG(s.ReviewScore)FROM RestaurantReviews s " +
+                           "WHERE s.RestaurantId= f.id)average FROM RestaurantProfiles f WHERE OverallRating is not null ";
+                        MySqlCommand cmd = new MySqlCommand(stm, conn);
+                        string version = Convert.ToString(cmd.ExecuteScalar());
+
+                        rdr = cmd.ExecuteReader();
+                        while (rdr.Read())
+                        {
+                            //string bar = rdr.GetDecimal(1).ToString();
+                            //var b = Bar(bar);
+
+                            //This code is pulling both the restaurant names and reviewScores, and changing background color
+                            Console.Write(rdr.GetString(0) /*+ "  \n\t\t\t\t\t\tReviewScore:" + rdr.GetDecimal(3) + b)*/);
+                            Console.Write("   ");
+                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.Write(rdr.GetString(1));
+                            Console.Write("   ");
+                            Console.BackgroundColor = ConsoleColor.Blue;
+
+                            //Parsing rdr string index to an integer in order to loop through it
+                            int convert;
+                            int.TryParse(rdr.GetString(1), out convert);
+                            //int convert2 = convert / 10;
+
+                            //Converting review scores from 50/100 To 5/10 to make bar graph appear smaller
+                            int convert2 = decimal.ToInt32(convert / 10);
+
+                            for (int i = 0; i < convert2; i++)
+                            {
+                                Console.Write(" ");
+
+                            }
+                            //Changing background color to gray to show end of bar graph and substracting the score with the possible review score which was 100 but now 10 meaning (5-10 OR 5 out 10)
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            int endOfBarGraph = 10 - convert2;
+                            for (int i = 0; i < endOfBarGraph; i++)
+                            {
+                                Console.Write(" ");
+
+                            }
+                            //Changing background to black in order to see only the biggining of bar and the end (one full bar)
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.WriteLine("");
+                        }
+                        break;
+
+
+                    case 2:
+                        conn = new MySqlConnection(cs);
+                        MySqlDataReader udr = null;
+                        conn.Open();
+
+                        string utm = "SELECT RestaurantName, ReviewScore FROM RestaurantProfiles left join RestaurantReviews using(id) ";
+                        MySqlCommand umd = new MySqlCommand(utm, conn);
+                        string uersion = Convert.ToString(umd.ExecuteScalar());
+
+                        udr = umd.ExecuteReader();
+                        while (udr.Read())
+                        {
+                            ////string bar = udr.GetDecimal(1).ToString();
+                            ////var b = Bar(bar);
+                            //Console.WriteLine(udr.GetString(0) + "  \n\t\t\t\t\t\tReviewScore:" + udr.GetDecimal(1));
+
+                            Console.Write(udr.GetString(0) /*+ "  \n\t\t\t\t\t\tReviewScore:" + rdr.GetDecimal(3) + b)*/);
+                            Console.Write("   ");
+                            Console.Write(udr.GetString(1));
+                            Console.Write("   ");
+                            Console.BackgroundColor = ConsoleColor.Blue;
+
+                            //Parsing rdr string index to an integer in order to loop through it
+                            int convert;
+                            int.TryParse(udr.GetString(1), out convert);
+                            //int convert2 = convert / 10;
+
+                            //Converting review scores from 50/100 To 5/10 to make bar graph appear smaller
+                            int convert2 = decimal.ToInt32(convert / 10);
+
+                            for (int i = 0; i < convert2; i++)
+                            {
+                                Console.Write(" ");
+
+                            }
+                            //Changing background color to gray to show end of bar graph and substracting the score with the possible review score which was 100 but now 10 meaning (5-10 OR 5 out 10)
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            int endOfBarGraph = 10 - convert2;
+                            for (int i = 0; i < endOfBarGraph; i++)
+                            {
+                                Console.Write(" ");
+
+                            }
+                            //Changing background to black in order to see only the biggining of bar and the end (one full bar)
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.WriteLine("");
+                        }
+                        break;
+
+
+                    case 3:
+                        conn = new MySqlConnection(cs);
+                        MySqlDataReader jdr = null;
+                        conn.Open();
+
+                        string jtm = "SELECT RestaurantName, ReviewScore FROM RestaurantProfiles left join RestaurantReviews using(id) ORDER BY ReviewScore DESC LIMIT 10";
+                        MySqlCommand jmd = new MySqlCommand(jtm, conn);
+                        string jersion = Convert.ToString(jmd.ExecuteScalar());
+
+                        jdr = jmd.ExecuteReader();
+                        while (jdr.Read())
+                        {
+
+                            Console.Write(jdr.GetString(0) /*+ "  \n\t\t\t\t\t\tReviewScore:" + rdr.GetDecimal(3) + b)*/);
+                            Console.Write("   ");
+                            Console.Write(jdr.GetString(1));
+                            Console.Write("   ");
+                            Console.BackgroundColor = ConsoleColor.Blue;
+
+                            //Parsing rdr string index to an integer in order to loop through it
+                            int convert;
+                            int.TryParse(jdr.GetString(1), out convert);
+                            //int convert2 = convert / 10;
+
+                            //Converting review scores from 50/100 To 5/10 to make bar graph appear smaller
+                            int convert2 = decimal.ToInt32(convert / 10);
+
+                            for (int i = 0; i < convert2; i++)
+                            {
+                                Console.Write(" ");
+
+                            }
+                            //Changing background color to gray to show end of bar graph and substracting the score with the possible review score which was 100 but now 10 meaning (5-10 OR 5 out 10)
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            int endOfBarGraph = 10 - convert2;
+                            for (int i = 0; i < endOfBarGraph; i++)
+                            {
+                                Console.Write(" ");
+
+                            }
+                            //Changing background to black in order to see only the biggining of bar and the end (one full bar)
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.WriteLine("");
+
+
+                        }
+                        break;
+
+                    case 4:
+                        myMenu.Display();
+                        Select();
+                        break;
+                }
+                Console.ReadKey();
+                thirdMenu.Display();
+                thirdSelect();
+            }
+
+        }
+
+
         bool running = true;
         private void Select()
         {
