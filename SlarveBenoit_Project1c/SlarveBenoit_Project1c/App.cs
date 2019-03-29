@@ -46,6 +46,44 @@ namespace SlarveBenoit_Project1c
                 running = false;
             }
         }
+
+        string cs = @"server=172.16.6.1; userid=bestAdmin; password=password; database=TimeTrackerDatabase; port=8889";
+        MySqlConnection conn = null;
+        Menu menu = new Menu();
+        public App()
+        {
+
+            menu = new Menu("Loggin", "Sign Up", "Exit Application");
+            menu.Title = "My Notes";
+            menu.Display();
+            Select();
+        }
+        bool running = true;
+        private void Select()
+        {
+            while (running)
+            {
+                Console.WriteLine("=============================");
+                int selection = Util.ValidateInt("Make selection:");
+                switch (selection)
+                {
+                    case 1:
+                        Loggin();
+                        break;
+                    case 2:
+                        SignUp();
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Exiting program...");
+                        running = false;
+                        Console.ReadKey();
+                        Environment.Exit(1);
+                        break;
+                }
+                running = false;
+            }
+        }
         void Loggin()
         {
             Console.Clear();
