@@ -459,6 +459,82 @@ namespace SlarveBenoit_Project1c
                     }
                     running = false;
                 }
+
+            }
+            void Loggin()
+            {
+                Console.Clear();
+                conn = new MySqlConnection(cs);
+                MySqlDataReader rdr = null;
+                conn.Open();
+
+                Console.WriteLine("Loggin");
+                Console.WriteLine("=============================");
+                string fullName = Util.ValidateString("Enter your Full Name");
+                string email = Util.ValidateString("Email:");
+                string password = Util.ValidateString("Password:");
+                //where emailAddress = @email and password = @password
+                string stm = "SELECT * FROM users where emailAddress = @email and password = @password;";
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
+                cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = password;
+                string version = Convert.ToString(cmd.ExecuteScalar());
+
+                rdr = cmd.ExecuteReader();
+                if (!rdr.HasRows)
+                {
+                    Console.WriteLine("=============================");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("The Email or Password you entered is wrong!");
+                    Console.WriteLine("Press Enter To Try Again");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ReadKey();
+                    Loggin();
+
+                }
+                //else if (rdr.HasRows)
+                //{
+                //    Console.ForegroundColor = ConsoleColor.Green;
+                //    Console.WriteLine("LOGGING IN .....");
+                //    Console.ReadKey();
+                //}
+
+                Menu mainPageMenu = new Menu("List of Notes", "Search By Keyword", "Add New Note", "Delete Note", "SIGN OUT");
+                mainPageMenu.Title = "Main Page";
+                mainPageMenu.Display();
+
+                bool running = true;
+                void mainSelect()
+                {
+                    while (running)
+                    {
+                        Console.WriteLine("=============================");
+                        int selection = Util.ValidateInt("Make selection:");
+                        switch (selection)
+                        {
+                            case 1:
+                                NoteList();
+                                break;
+                            case 2:
+                                Search();
+                                break;
+                            case 3:
+                                AddNote();
+                                break;
+                            case 4:
+                                DeleteNote();
+                                break;
+                            case 5:
+                                Console.WriteLine("Exiting....");
+                                menu.Display();
+                                Select();
+
+                                break;
+                        }
+                        running = false;
+                    }
+                }
+                mainSelect();
             }
             mainSelect();
         }
