@@ -11,7 +11,7 @@ namespace SlarveBenoit_Integrative2
 {
     class App
     {
-        
+
         StringBuilder sb = new StringBuilder();
         StringBuilder st = new StringBuilder();
         StringBuilder sp = new StringBuilder();
@@ -29,7 +29,7 @@ namespace SlarveBenoit_Integrative2
         public App()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            myMenu = new Menu("Convert Restaurant Reviews from SQL to JSON","Showcase 5 Star Rating System","Showcase Animated Bar Graph Review System","Play Card Game","EXIT");
+            myMenu = new Menu("Convert Restaurant Reviews from SQL to JSON", "Showcase 5 Star Rating System", "Showcase Animated Bar Graph Review System", "Play Card Game", "EXIT");
             myMenu.Title = "Hello Admin, What Would You Like To Do Today?";
             myMenu.Display();
             Select();
@@ -85,7 +85,7 @@ namespace SlarveBenoit_Integrative2
             for (int ii = 0; ii <= theRating; ii++)
             {
                 //We could run the below code here if we wanted, but we just set it once above instead of each time here.
-                Console.BackgroundColor = myBarGraphColor; 
+                Console.BackgroundColor = myBarGraphColor;
                 //This creates a colored bar graph of spaces, so if you have a 5/10, you will get 5 colored spaces.
                 Console.Write(" ");
             }
@@ -152,15 +152,15 @@ namespace SlarveBenoit_Integrative2
                     case 1:
                         ConvertReviews();
                         SaveToJson();
-                        
+
                         break;
 
-                    case 2:                      
+                    case 2:
                         ShowcaseRating();
                         break;
 
                     case 3:
-                        ShowcaseBarGraph();                     
+                        ShowcaseBarGraph();
                         break;
 
                     case 4:
@@ -168,7 +168,7 @@ namespace SlarveBenoit_Integrative2
                         Console.ReadKey();
                         myMenu.Display();
                         Select();
-                        break;                  
+                        break;
 
                     case 5:
                         Console.WriteLine("Exiting program...");
@@ -177,19 +177,19 @@ namespace SlarveBenoit_Integrative2
                         Environment.Exit(1);
                         break;
 
-                }               
+                }
             }
 
 
 
             void ConvertReviews()
             {
-                
+
                 //string cs = @"server=172.16.6.1; userid=bestAdmin; password=password; database=RestaurantDataBase; port=8889";               
                 //MySqlConnection conn = null;
 
                 try
-                {                 
+                {
                     conn = new MySqlConnection(cs);
                     MySqlDataReader rdr = null;
                     conn.Open();
@@ -211,11 +211,11 @@ namespace SlarveBenoit_Integrative2
                     //"SELECT (id) as id, (RestaurantId) as RestaurantId, (ReviewScore) as ReviewScore," +
                     //"(PossibleReviewScore) as PossibleReviewScore, (ReviewText) as ReviewText," +
                     //"(ReviewColor) as ReviewColor FROM RestaurantReviews limit 10 ";               
-                    MySqlCommand cmd = new MySqlCommand(stm, conn);                 
+                    MySqlCommand cmd = new MySqlCommand(stm, conn);
                     string version = Convert.ToString(cmd.ExecuteScalar());
-                   
+
                     rdr = cmd.ExecuteReader();
-                    while ( rdr.Read())                       
+                    while (rdr.Read())
                     {
                         //Console.WriteLine(rdr.GetInt32(0) + rdr.GetInt32(1) + rdr.GetInt32(2) + rdr.GetInt32(3) + rdr.GetString(4) + rdr.GetString(5)
                         //   + rdr.GetInt32(6)+rdr.GetString(7)+rdr.GetString(8)+rdr.GetString(9)+rdr.GetString(10)+rdr.GetString(11)+rdr.GetString(12)+rdr.GetString(13)
@@ -227,7 +227,7 @@ namespace SlarveBenoit_Integrative2
                         //StringBuilder sp = new StringBuilder();
 
                         sb.AppendLine(" id:" + rdr.GetInt32(0) + "  restaurantid:" + rdr.GetInt32(1)
-                        +"   reviewscore: " + rdr.GetInt32(2) + "  possiblereviewscore: " + rdr.GetInt32(3)
+                        + "   reviewscore: " + rdr.GetInt32(2) + "  possiblereviewscore: " + rdr.GetInt32(3)
                         + "   reviewtext: " + rdr.GetString(4) + "  reviewcolor: " + rdr.GetString(5));
                         Console.WriteLine(sb);
 
@@ -242,7 +242,7 @@ namespace SlarveBenoit_Integrative2
                         + "   OverallRating:" + rdr.GetDecimal(25) + "  OverallPossibleRating" + rdr.GetDecimal(26));
                         Console.WriteLine(sp);
 
-                        
+
 
 
                         //+"   \r\nid:" + rdr.GetInt32(6) + "  Month:" + rdr.GetString(7) + "  FullRatingIcon:" + rdr.GetString(8)
@@ -254,16 +254,16 @@ namespace SlarveBenoit_Integrative2
                         //+ "   FoodRating" + rdr.GetDecimal(21) + "  ServiceRating" + rdr.GetDecimal(22) + "  AmbienceRating" + rdr.GetDecimal(23) + "  ValueRating" + rdr.GetDecimal(24)
                         //+ "   OverrallRating:" + rdr.GetDecimal(25) + "  OverrallPossibleRating" + rdr.GetDecimal(26));
                     }
-                    
-                  
-                    
-                        
+
+
+
+
                     Directory.CreateDirectory(_directory);
                     Console.WriteLine("....Saving to JSON");
                     using (StreamWriter sw = new StreamWriter(_directory + "database.json"))
                     {
                         sw.WriteLine("[");
-                        
+
                         {
 
                             sw.WriteLine("{");
@@ -315,12 +315,12 @@ namespace SlarveBenoit_Integrative2
                 }
                 finally
                 {
-                  if (conn != null)
-                   {
+                    if (conn != null)
+                    {
                         conn.Close();
-                   }
+                    }
                 }
-                
+
                 Console.ReadKey();
                 myMenu.Display();
                 Select();
