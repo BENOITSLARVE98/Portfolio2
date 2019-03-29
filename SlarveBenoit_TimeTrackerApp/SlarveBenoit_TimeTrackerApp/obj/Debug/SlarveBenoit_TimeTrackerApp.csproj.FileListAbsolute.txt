@@ -1,0 +1,8 @@
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\bin\Debug\SlarveBenoit_TimeTrackerApp.exe.config
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\bin\Debug\SlarveBenoit_TimeTrackerApp.exe
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\bin\Debug\SlarveBenoit_TimeTrackerApp.pdb
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\obj\Debug\SlarveBenoit_TimeTrackerApp.csprojResolveAssemblyReference.cache
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\obj\Debug\SlarveBenoit_TimeTrackerApp.csproj.CoreCompileInputs.cache
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\obj\Debug\SlarveBenoit_TimeTrackerApp.exe
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\obj\Debug\SlarveBenoit_TimeTrackerApp.pdb
+Z:\Visual Studio 2017\Portfolio2\SlarveBenoit_TimeTrackerApp\SlarveBenoit_TimeTrackerApp\bin\Debug\MySql.Data.dll
